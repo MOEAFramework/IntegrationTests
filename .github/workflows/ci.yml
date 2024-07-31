@@ -1,0 +1,44 @@
+name: Tests
+
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      java-distribution:
+        type: choice
+        required: true
+        description: Java distribution
+        options:
+          - 'zulu'
+          - 'temurin'
+          - 'oracle'
+        default: 'zulu'
+      java-version
+        type: choice
+        required: true
+        description: Java version
+        options:
+          - '17'
+          - '18'
+          - '19'
+          - '20'
+          - '21'
+        default: '17'
+        
+env:
+  JAVA_VERSION: ${{ inputs.java-version || '17' }}
+  JAVA_DISTRIBUTION: ${{ inputs.java-distribution || 'zulu' }}
+
+jobs:
+  maven-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK ${{ env.JAVA_VERSION }}
+      uses: actions/setup-java@v4
+      with:
+        java-version: ${{ env.JAVA_VERSION }}
+        distribution: ${{ env.JAVA_DISTRIBUTION }}
+        cache: maven
+    - run: mvn test
+    
