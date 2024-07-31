@@ -25,8 +25,8 @@ The following generates a new signing key.  These keys are valid for several yea
    ```
    gpg --keyserver keyserver.ubuntu.com --send-keys <keyId>
    ```
-3. Create base64 encoded version of the key
+3. Export the private key
    ```
-   gpg --armor --export-secret-key <keyId> | base64
+   gpg --armor --export-secret-key <keyId>
    ```
 4. Update the GitHub Actions secrets
