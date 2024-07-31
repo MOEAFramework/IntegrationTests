@@ -16,7 +16,7 @@ build:
 	mkdir -p perf/lib bin
 	mv target/dependency/*.jar perf/lib
 	make -C perf
-	javac -d bin -classpath "$(CLASSPATH)" src/main/java/org/moeaframework/performance/*.java
+	javac -d bin -classpath "$(CLASSPATH)" perf/src/org/moeaframework/performance/*.java
 	
 run:
 	java -classpath "$(CLASSPATH)" org.moeaframework.performance.Benchmark $(SAMPLES) $(NFE)
