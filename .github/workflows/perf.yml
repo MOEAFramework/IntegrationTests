@@ -68,6 +68,8 @@ jobs:
           compiler: gcc
           version: 13
       - name: Make
-        run: make -C perf
+        run: |
+          make clean
+          make build
       - name: Run Benchmarks
         run: make SAMPLES=${{ env.SAMPLES }} NFE=${{ env.NFE }} run
