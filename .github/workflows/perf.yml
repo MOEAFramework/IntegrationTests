@@ -1,0 +1,73 @@
+name: Performance
+
+on:
+  push:
+    paths-ignore:
+    - 'Timings.md'
+  workflow_dispatch:
+    inputs:
+      samples:
+        type: number
+        required: true
+        default: '10'
+      nfe:
+        type: number
+        required: true
+        default: '100000'
+      java-distribution:
+        type: choice
+        required: true
+        description: Java distribution
+        options:
+          - 'zulu'
+          - 'temurin'
+          - 'oracle'
+        default: 'zulu'
+      java-version:
+        type: choice
+        required: true
+        description: Java version
+        options:
+          - '17'
+          - '18'
+          - '19'
+          - '20'
+          - '21'
+          - '22'
+        default: '17'
+        
+env:
+  SAMPLES: ${{ inputs.samples || '10' }}
+  NFE: ${{ inputs.nfe || '100000' }}
+  JAVA_DISTRIBUTION: ${{ inputs.java-distribution || 'zulu' }}
+  JAVA_VERSION: ${{ inputs.java-version || '17' }}
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ windows-latest, ubuntu-latest, macos-13 ]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: ${{ env.JAVA_DISTRIBUTION }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12' 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 'pypy3.10' 
+      - uses: fortran-lang/setup-fortran@v1
+        if: runner.os == 'macOS'
+        with:
+          compiler: gcc
+          version: 13
+      - name: Make
+        run: make -C perf
+      - name: Run Benchmarks
+        run: make SAMPLES=${{ env.SAMPLES }} NFE=${{ env.NFE }} run
