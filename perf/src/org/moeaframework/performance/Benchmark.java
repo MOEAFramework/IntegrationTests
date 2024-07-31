@@ -55,7 +55,7 @@ public class Benchmark {
 	public static void runPureC() throws IOException, InterruptedException {
 		Timing.startTimer("C (pure)");
 		
-		Process process = new ProcessBuilder("./perf/c/dtlz2_pure.exe", Integer.toString(NFE)).start();
+		Process process = new ProcessBuilder("./c/dtlz2_pure.exe", Integer.toString(NFE)).start();
 		process.waitFor();
 		
 		Timing.stopTimer("C (pure)");

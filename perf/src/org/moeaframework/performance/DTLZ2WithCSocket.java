@@ -25,7 +25,7 @@ public class DTLZ2WithCSocket extends AbstractDTLZ2 {
 
 	public DTLZ2WithCSocket() throws IOException {
 		super(new ExternalProblem.Builder()
-				.withCommand("perf/c/dtlz2_socket.exe")
+				.withCommand("c/dtlz2_socket.exe")
 				.withSocket("127.0.0.1", DEFAULT_PORT));
 	}
 

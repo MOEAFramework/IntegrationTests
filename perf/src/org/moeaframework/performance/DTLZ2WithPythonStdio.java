@@ -25,7 +25,7 @@ public class DTLZ2WithPythonStdio extends AbstractDTLZ2 {
 
 	public DTLZ2WithPythonStdio() throws IOException {
 		super(new ExternalProblem.Builder()
-				.withCommand("python", "perf/python/dtlz2.py"));
+				.withCommand("python", "python/dtlz2.py"));
 	}
 
 	@Override

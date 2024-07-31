@@ -25,7 +25,7 @@ public class DTLZ2WithCStdio extends AbstractDTLZ2 {
 
 	public DTLZ2WithCStdio() throws IOException {
 		super(new ExternalProblem.Builder()
-				.withCommand("perf/c/dtlz2_stdio.exe"));
+				.withCommand("c/dtlz2_stdio.exe"));
 	}
 
 	@Override

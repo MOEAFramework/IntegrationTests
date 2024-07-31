@@ -25,7 +25,7 @@ public class DTLZ2WithPypySocket extends AbstractDTLZ2 {
 
 	public DTLZ2WithPypySocket() throws IOException {
 		super(new ExternalProblem.Builder()
-				.withCommand("pypy3", "perf/python/dtlz2.py", "--socket")
+				.withCommand("pypy3", "python/dtlz2.py", "--socket")
 				.withSocket("127.0.0.1", DEFAULT_PORT));
 	}
 
