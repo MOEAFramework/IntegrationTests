@@ -5,13 +5,13 @@ import org.junit.Test;
 import org.moeaframework.Executor;
 import org.moeaframework.core.NondominatedPopulation;
 
-public class JMetalTests {
+public class GeneralizedDecompositionTest {
 	
 	@Test
 	public void test() {
 		NondominatedPopulation result = new Executor()
 				.withProblem("UF1")
-				.withAlgorithm("AbYSS-JMetal")
+				.withAlgorithm("GD-MOEA/D")
 				.withMaxEvaluations(10000)
 				.run();
 		

@@ -10,7 +10,7 @@ import org.moeaframework.core.NondominatedPopulation;
 import org.moeaframework.core.Problem;
 import org.moeaframework.problem.DTLZ.DTLZ2;
 
-public class BasicTests {
+public class BasicTest {
 	
 	@Test
 	public void testDirect() {

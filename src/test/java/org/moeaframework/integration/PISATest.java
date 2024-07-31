@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.moeaframework.Executor;
 import org.moeaframework.core.NondominatedPopulation;
 
-public class PISATests {
+public class PISATest {
 	
 	@Test
 	public void testPISA() {
