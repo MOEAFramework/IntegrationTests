@@ -13,7 +13,7 @@ on:
           - 'temurin'
           - 'oracle'
         default: 'zulu'
-      java-version
+      java-version:
         type: choice
         required: true
         description: Java version
