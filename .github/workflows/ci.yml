@@ -2,6 +2,9 @@ name: Tests
 
 on:
   push:
+    paths-ignore:
+      - 'docs'
+      - 'README.md'
   workflow_dispatch:
     inputs:
       java-distribution:
