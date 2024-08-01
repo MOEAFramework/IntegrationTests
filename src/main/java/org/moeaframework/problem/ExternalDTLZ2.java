@@ -15,18 +15,22 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with the MOEA Framework.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.moeaframework.performance;
+package org.moeaframework.problem;
 
 import java.io.IOException;
 
 import org.moeaframework.core.Solution;
 import org.moeaframework.core.variable.RealVariable;
-import org.moeaframework.problem.ExternalProblem;
 
-public abstract class AbstractDTLZ2 extends ExternalProblem {
+public abstract class ExternalDTLZ2 extends ExternalProblem {
 
-	public AbstractDTLZ2(ExternalProblem.Builder builder) throws IOException {
+	public ExternalDTLZ2(ExternalProblem.Builder builder) throws IOException {
 		super(builder);
+	}
+	
+	@Override
+	public String getName() {
+		return getClass().getSimpleName();
 	}
 
 	@Override

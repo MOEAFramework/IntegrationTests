@@ -15,22 +15,32 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with the MOEA Framework.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.moeaframework.performance;
+package org.moeaframework.benchmark;
 
 import java.io.IOException;
 
-import org.moeaframework.problem.ExternalProblem;
+import org.moeaframework.core.Algorithm;
+import org.moeaframework.core.spi.AlgorithmFactory;
+import org.moeaframework.problem.DTLZ.DTLZ2;
+import org.moeaframework.util.TypedProperties;
 
-public class DTLZ2WithCStdio extends AbstractDTLZ2 {
-
-	public DTLZ2WithCStdio() throws IOException {
-		super(new ExternalProblem.Builder()
-				.withCommand("c/dtlz2_stdio.exe"));
-	}
+public class JMetalPluginBenchmark implements Benchmark {
 
 	@Override
 	public String getName() {
-		return "C (stdio)";
+		return "JMetal (Plugin)";
 	}
-	
+
+	@Override
+	public void run(int NFE) throws IOException, InterruptedException {
+		DTLZ2 problem = new DTLZ2(2);
+
+		// this must be set to ensure JMetal runs for the correct number of evaluations!
+		TypedProperties properties = new TypedProperties();
+		properties.setInt("maxEvaluations", NFE);
+
+		Algorithm algorithm = AlgorithmFactory.getInstance().getAlgorithm("NSGAII-JMetal", properties, problem);
+		algorithm.run(NFE);
+	}
+
 }

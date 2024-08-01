@@ -23,7 +23,7 @@
 		<dependency>
 			<groupId>org.moeaframework</groupId>
 			<artifactId>moeaframework</artifactId>
-			<version>4.3</version>
+			<version>4.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.moeaframework</groupId>
@@ -68,6 +68,31 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>3.3.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<mainClass>org.moeaframework.Benchmarks</mainClass>
+					<additionalClasspathElements>
+						<additionalClasspathElement>ext/native/NativeC/NativeC.jar</additionalClasspathElement>
+						<additionalClasspathElement>ext/native/NativeC/NativeCPP.jar</additionalClasspathElement>
+						<additionalClasspathElement>ext/native/NativeC/NativeFortran.jar</additionalClasspathElement>
+					</additionalClasspathElements>
+					<arguments>
+						<argument>1</argument>
+						<argument>10000</argument>
+					</arguments>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

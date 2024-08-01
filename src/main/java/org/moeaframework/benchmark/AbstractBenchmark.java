@@ -15,23 +15,36 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with the MOEA Framework.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.moeaframework.performance;
+package org.moeaframework.benchmark;
 
 import java.io.IOException;
+import java.util.function.Supplier;
 
-import org.moeaframework.problem.ExternalProblem;
+import org.moeaframework.algorithm.NSGAII;
+import org.moeaframework.core.Algorithm;
+import org.moeaframework.core.Problem;
 
-public class DTLZ2WithPypySocket extends AbstractDTLZ2 {
-
-	public DTLZ2WithPypySocket() throws IOException {
-		super(new ExternalProblem.Builder()
-				.withCommand("pypy3", "python/dtlz2.py", "--socket")
-				.withSocket("127.0.0.1", DEFAULT_PORT));
+public class AbstractBenchmark implements Benchmark {
+	
+	private final String name;
+	
+	private final Supplier<Problem> problemSupplier;
+	
+	public AbstractBenchmark(String name, Supplier<Problem> problemSupplier) {
+		super();
+		this.name = name;
+		this.problemSupplier = problemSupplier;
 	}
 
 	@Override
 	public String getName() {
-		return "Pypy (socket)";
+		return name;
 	}
-	
+
+	@Override
+	public void run(int NFE) throws IOException, InterruptedException {
+		Algorithm algorithm = new NSGAII(problemSupplier.get());
+		algorithm.run(NFE);
+	}
+
 }

@@ -15,22 +15,16 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with the MOEA Framework.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.moeaframework.performance;
+package org.moeaframework.problem;
 
 import java.io.IOException;
 
-import org.moeaframework.problem.ExternalProblem;
+public class DTLZ2WithCSocket extends ExternalDTLZ2 {
 
-public class DTLZ2WithPypyStdio extends AbstractDTLZ2 {
-
-	public DTLZ2WithPypyStdio() throws IOException {
+	public DTLZ2WithCSocket() throws IOException {
 		super(new ExternalProblem.Builder()
-				.withCommand("pypy3", "python/dtlz2.py"));
-	}
-
-	@Override
-	public String getName() {
-		return "Pypy (stdio)";
+				.withCommand("ext/c/dtlz2_socket.exe")
+				.withSocket("127.0.0.1", DEFAULT_PORT));
 	}
 	
 }
