@@ -1,3 +1,6 @@
+SAMPLES ?= 10
+NFE ?= 100000
+
 build:
 	mvn dependency:copy-dependencies
 	make -C ext/c
@@ -7,7 +10,7 @@ build:
 	mvn compile
 	
 benchmark:
-	mvn exec:java
+	mvn exec:java -Dbenchmark.samples=$(SAMPLES) -Dbenchmark.nfe=$(NFE)
 	
 test:
 	mvn test

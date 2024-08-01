@@ -9,6 +9,8 @@
 	<properties>
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
+		<benchmark.samples>1</benchmark.samples>  
+		<benchmark.nfe>10000</benchmark.nfe>    
 	</properties>
 
 	<repositories>
@@ -82,8 +84,8 @@
 						<additionalClasspathElement>ext/native/NativeFortran/NativeFortran.jar</additionalClasspathElement>
 					</additionalClasspathElements>
 					<arguments>
-						<argument>1</argument>
-						<argument>10000</argument>
+						<argument>${benchmark.samples}</argument>
+						<argument>${benchmark.nfe}</argument>
 					</arguments>
 				</configuration>
 			</plugin>
