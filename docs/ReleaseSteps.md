@@ -12,21 +12,12 @@ To publish a new version of the MOEA Framework or related project:
 
 ## GPG Signing Keys
 
-The following generates a new signing key.  These keys are valid for several years, but if expired or lost we can always generate new keys.
+Maven artifacts are signed with our [GPG-generated key](https://keyserver.ubuntu.com/pks/lookup?search=04fb5ffc82aedf3a&fingerprint=on&op=index).
 
-1. Generate a new GPG key:
-   ```
-   gpg --gen-key
-   #    Name: MOEAFramework
-   #    Email: admin@moeaframework.org
-   #    Password: <passpharse>
-   ```
-2. Publish key to key server:
-   ```
-   gpg --keyserver keyserver.ubuntu.com --send-keys <keyId>
-   ```
-3. Export the private key
-   ```
-   gpg --armor --export-secret-key <keyId>
-   ```
-4. Update the GitHub Actions secrets
+As these keys expire after a few years, we may need to periodically generate a new key and update the corresponding GitHub Actions secrets.
+
+```bash
+gpg --gen-key
+gpg --keyserver keyserver.ubuntu.com --send-keys <keyId>
+gpg --armor --export-secret-key <keyId>
+```
