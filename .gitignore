@@ -1,9 +1,11 @@
 /.settings/
 /target/
 /pisa_binaries/
+/ext/lib
 **/bin/
 **/*.jar
 **/*.class
+**/*.o
 **/*.exe
 **/*.so
 **/*.dll

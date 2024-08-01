@@ -30,10 +30,10 @@ public interface Benchmark {
 	
 	void run(int NFE) throws IOException, InterruptedException;
 	
-	public static Benchmark of(String name, Class<? extends Problem> problemType) {
+	public static Benchmark of(String name, Class<? extends Problem> problemType, Object... args) {
 		return new AbstractBenchmark(name, () -> {
 			try {
-				return ConstructorUtils.invokeConstructor(problemType);
+				return ConstructorUtils.invokeConstructor(problemType, args);
 			} catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException
 					| InstantiationException e) {
 				throw new FrameworkException(e);
@@ -41,11 +41,11 @@ public interface Benchmark {
 		});
 	}
 	
-	public static Benchmark of(String name, String className) {
+	public static Benchmark of(String name, String className, Object... args) {
 		return new AbstractBenchmark(name, () -> {
 			try {
 				Class<?> problemType = Class.forName(className);
-				return (Problem)ConstructorUtils.invokeConstructor(problemType);
+				return (Problem)ConstructorUtils.invokeConstructor(problemType, args);
 			} catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException
 					| InstantiationException | ClassNotFoundException e) {
 				throw new FrameworkException(e);

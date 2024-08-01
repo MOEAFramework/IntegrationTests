@@ -28,7 +28,7 @@ public class PureCBenchmark implements Benchmark {
 
 	@Override
 	public void run(int NFE) throws IOException, InterruptedException {
-		Process process = new ProcessBuilder("./c/dtlz2_pure.exe", Integer.toString(NFE)).start();
+		Process process = new ProcessBuilder("ext/c/dtlz2_pure.exe", Integer.toString(NFE)).start();
 		process.waitFor();
 	}
 

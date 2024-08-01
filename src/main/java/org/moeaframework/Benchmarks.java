@@ -43,7 +43,7 @@ public class Benchmarks {
 	static {
 		BENCHMARKS = List.of(
 			new PureCBenchmark(),
-			Benchmark.of("Java", DTLZ2.class),
+			Benchmark.of("Java", DTLZ2.class, 2),
 			Benchmark.of("C (JNA Interface Mapping)", "org.moeaframework.benchmark.NativeC"),
 			Benchmark.of("C (JNA Direct Mapping)", "org.moeaframework.benchmark.NativeCDirectMapping"),
 			Benchmark.of("C++ (JNA Interface Mapping)", "org.moeaframework.benchmark.NativeCPP"),

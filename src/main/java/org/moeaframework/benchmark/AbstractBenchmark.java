@@ -43,8 +43,10 @@ public class AbstractBenchmark implements Benchmark {
 
 	@Override
 	public void run(int NFE) throws IOException, InterruptedException {
-		Algorithm algorithm = new NSGAII(problemSupplier.get());
-		algorithm.run(NFE);
+		try (Problem problem = problemSupplier.get()) {
+			Algorithm algorithm = new NSGAII(problem);
+			algorithm.run(NFE);
+		}
 	}
 
 }

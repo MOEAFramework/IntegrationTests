@@ -56,20 +56,13 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>install</phase>
-						<goals>
-							<goal>copy-dependencies</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>${project.build.directory}/lib</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
+				<version>3.7.1</version>
+				<configuration>
+					<outputDirectory>${project.basedir}/ext/lib</outputDirectory>
+				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
@@ -85,8 +78,8 @@
 					<mainClass>org.moeaframework.Benchmarks</mainClass>
 					<additionalClasspathElements>
 						<additionalClasspathElement>ext/native/NativeC/NativeC.jar</additionalClasspathElement>
-						<additionalClasspathElement>ext/native/NativeC/NativeCPP.jar</additionalClasspathElement>
-						<additionalClasspathElement>ext/native/NativeC/NativeFortran.jar</additionalClasspathElement>
+						<additionalClasspathElement>ext/native/NativeCPP/NativeCPP.jar</additionalClasspathElement>
+						<additionalClasspathElement>ext/native/NativeFortran/NativeFortran.jar</additionalClasspathElement>
 					</additionalClasspathElements>
 					<arguments>
 						<argument>1</argument>

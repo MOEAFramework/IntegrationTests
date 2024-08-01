@@ -1,9 +1,10 @@
-name: Performance
+name: Benchmark
 
 on:
   push:
     paths-ignore:
-    - 'Timings.md'
+      - 'docs'
+      - 'README.md'
   workflow_dispatch:
     inputs:
       samples:
@@ -67,9 +68,7 @@ jobs:
         with:
           compiler: gcc
           version: 13
-      - name: Make
-        run: |
-          make -C perf clean
-          make -C perf build
+      - name: Build
+        run: make clean build
       - name: Run Benchmarks
-        run: make -C perf SAMPLES=${{ env.SAMPLES }} NFE=${{ env.NFE }} run
+        run: make SAMPLES=${{ env.SAMPLES }} NFE=${{ env.NFE }} benchmark
