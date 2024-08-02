@@ -29,20 +29,16 @@ on:
           - '22'
         default: '17'
         
-env:
-  JAVA_VERSION: ${{ inputs.java-version || '17' }}
-  JAVA_DISTRIBUTION: ${{ inputs.java-distribution || 'zulu' }}
-
 jobs:
   maven-test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Set up JDK ${{ env.JAVA_VERSION }}
-      uses: actions/setup-java@v4
+    - name: Setup build
+      uses: MOEAFramework/.github/actions/setup-build@main
       with:
-        java-version: ${{ env.JAVA_VERSION }}
-        distribution: ${{ env.JAVA_DISTRIBUTION }}
-        cache: maven
-    - run: mvn test
+        java-version: ${{ inputs.java-version || '17' }}
+        java-distribution: ${{ inputs.java-distribution || 'zulu' }}
+    - name: Run tests
+      run: mvn test
     
