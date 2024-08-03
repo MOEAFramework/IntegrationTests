@@ -37,8 +37,8 @@ jobs:
     - name: Setup build
       uses: MOEAFramework/.github/actions/setup-build@main
       with:
-        java-version: ${{ inputs.java-version || '17' }}
-        java-distribution: ${{ inputs.java-distribution || 'zulu' }}
+        java-version: ${{ inputs.java-version }}
+        java-distribution: ${{ inputs.java-distribution }}
     - name: Run tests
       run: mvn test
     
