@@ -40,8 +40,6 @@ on:
 env:
   SAMPLES: ${{ inputs.samples || '10' }}
   NFE: ${{ inputs.nfe || '100000' }}
-  JAVA_DISTRIBUTION: ${{ inputs.java-distribution || 'zulu' }}
-  JAVA_VERSION: ${{ inputs.java-version || '17' }}
 
 jobs:
   test:
@@ -51,15 +49,13 @@ jobs:
       matrix:
         os: [ windows-latest, ubuntu-latest, macos-13 ]
     steps:
-      - uses: actions/checkout@v4
-      - name: Set up JDK ${{ env.JAVA_VERSION }}
-        uses: actions/setup-java@v4
+      - name: Setup build
+        uses: MOEAFramework/.github/actions/setup-build@main
         with:
-          java-version: ${{ env.JAVA_VERSION }}
-          distribution: ${{ env.JAVA_DISTRIBUTION }}
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12' 
+          java-version: ${{ inputs.java-version }}
+          java-distribution: ${{ inputs.java-distribution }}
+          setup-python: true
+          python-version: '3.12'
       - uses: actions/setup-python@v5
         with:
           python-version: 'pypy3.10' 
