@@ -55,15 +55,10 @@ jobs:
           java-version: ${{ inputs.java-version }}
           java-distribution: ${{ inputs.java-distribution }}
           setup-python: true
-          python-version: '3.12'
+          setup-fortran: true
       - uses: actions/setup-python@v5
         with:
           python-version: 'pypy3.10' 
-      - uses: fortran-lang/setup-fortran@v1
-        if: runner.os == 'macOS'
-        with:
-          compiler: gcc
-          version: 13
       - name: Build
         run: make clean build
       - name: Run Benchmarks
