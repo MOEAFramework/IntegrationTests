@@ -50,7 +50,7 @@ jobs:
       - name: Setup build
         uses: MOEAFramework/.github/actions/setup-build@main
         with:
-          java-version: ${{ inputs.java-version }}
+          java-version: ${{ inputs.java-version || '19' }}
           java-distribution: ${{ inputs.java-distribution }}
           setup-python: true
           setup-fortran: true
