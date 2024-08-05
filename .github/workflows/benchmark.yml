@@ -29,13 +29,11 @@ on:
         required: true
         description: Java version
         options:
-          - '17'
-          - '18'
           - '19'
           - '20'
           - '21'
           - '22'
-        default: '17'
+        default: '19'
         
 env:
   SAMPLES: ${{ inputs.samples || '10' }}
