@@ -21,13 +21,11 @@ on:
         required: true
         description: Java version
         options:
-          - '17'
-          - '18'
           - '19'
           - '20'
           - '21'
           - '22'
-        default: '17'
+        default: '19'
         
 jobs:
   maven-test:
@@ -37,7 +35,7 @@ jobs:
     - name: Setup build
       uses: MOEAFramework/.github/actions/setup-build@main
       with:
-        java-version: ${{ inputs.java-version }}
+        java-version: ${{ inputs.java-version || '19' }}
         java-distribution: ${{ inputs.java-distribution }}
     - name: Run tests
       run: mvn test
