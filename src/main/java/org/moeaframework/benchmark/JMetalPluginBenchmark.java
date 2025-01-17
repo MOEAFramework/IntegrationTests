@@ -19,10 +19,10 @@ package org.moeaframework.benchmark;
 
 import java.io.IOException;
 
-import org.moeaframework.core.Algorithm;
+import org.moeaframework.algorithm.Algorithm;
 import org.moeaframework.core.spi.AlgorithmFactory;
 import org.moeaframework.problem.DTLZ.DTLZ2;
-import org.moeaframework.util.TypedProperties;
+import org.moeaframework.core.TypedProperties;
 
 public class JMetalPluginBenchmark implements Benchmark {
 

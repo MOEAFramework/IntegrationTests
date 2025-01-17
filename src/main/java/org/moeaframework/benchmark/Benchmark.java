@@ -22,7 +22,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import org.apache.commons.lang3.reflect.ConstructorUtils;
 import org.moeaframework.core.FrameworkException;
-import org.moeaframework.core.Problem;
+import org.moeaframework.problem.Problem;
 
 public interface Benchmark {
 	
