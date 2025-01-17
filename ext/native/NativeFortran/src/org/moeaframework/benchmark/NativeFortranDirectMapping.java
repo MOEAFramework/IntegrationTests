@@ -1,7 +1,6 @@
 package org.moeaframework.benchmark;
 
 import org.moeaframework.core.Solution;
-import org.moeaframework.core.variable.EncodingUtils;
 import org.moeaframework.core.variable.RealVariable;
 import org.moeaframework.problem.AbstractProblem;
 
@@ -21,14 +20,14 @@ public class NativeFortranDirectMapping extends AbstractProblem {
 	}
 
 	public void evaluate(Solution solution) {
-		double[] vars = EncodingUtils.getReal(solution);
+		double[] vars = RealVariable.getReal(solution);
 		double[] objs = new double[numberOfObjectives];
 		double[] constrs = new double[numberOfConstraints];
 
 		evaluate(vars, objs, constrs);
 
-		solution.setObjectives(objs);
-		solution.setConstraints(constrs);
+		solution.setObjectiveValues(objs);
+		solution.setConstraintValues(constrs);
 	}
 
 	public Solution newSolution() {

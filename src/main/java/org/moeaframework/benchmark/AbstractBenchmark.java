@@ -21,8 +21,8 @@ import java.io.IOException;
 import java.util.function.Supplier;
 
 import org.moeaframework.algorithm.NSGAII;
-import org.moeaframework.core.Algorithm;
-import org.moeaframework.core.Problem;
+import org.moeaframework.algorithm.Algorithm;
+import org.moeaframework.problem.Problem;
 
 public class AbstractBenchmark implements Benchmark {
 	

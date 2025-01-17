@@ -1,7 +1,7 @@
 package org.moeaframework.benchmark;
 
 import org.moeaframework.algorithm.NSGAII;
-import org.moeaframework.core.Problem;
+import org.moeaframework.problem.Problem;
 
 public class Example {
 
